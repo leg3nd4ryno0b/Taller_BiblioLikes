@@ -91,6 +91,27 @@ public class CatalogoLibros {
         aux.setAnio(anio);
     }
 
+    public void darMeGusta(int codigo) throws Exception {
+        int indice=buscarIndicePorCodigo(codigo);
+        if(indice==-1)
+            throw new Exception("Libro no encontrado");
+        libros.get(indice).incrementarMeGusta();
+    }
+
+    public ArrayList<Libro> obtenerRanking(){
+        ArrayList<Libro> ranking=new ArrayList<>(libros);
+        for(int i=0;i<ranking.size()-1;i++){
+            for(int j=0;j<ranking.size()-1-i;j++){
+                if(ranking.get(j).getMeGusta()<ranking.get(j+1).getMeGusta()){
+                    Libro aux=ranking.get(j);
+                    ranking.set(j,ranking.get(j+1));
+                    ranking.set(j+1,aux);
+                }
+            }
+        }
+        return ranking;
+    }
+
     public ArrayList<Libro> obtener(){
         return libros;
     }

@@ -30,6 +30,9 @@ public class Ventana {
     private JSpinner spiEditarAnio;
     private JLabel lblMeGusta;
     private JButton btnGuardar;
+    private JButton btnMeGusta;
+    private JList lstRanking;
+    private JButton btnActualizar;
     private CatalogoLibros catalogo=new CatalogoLibros();
     private int codigoSeleccionado=-1;
     private String consulta="";
@@ -38,6 +41,7 @@ public class Ventana {
         spiAnio.setModel(new SpinnerNumberModel(Year.now().getValue(),1,Year.now().getValue(),1));
         spiEditarAnio.setModel(new SpinnerNumberModel(Year.now().getValue(),1,Year.now().getValue(),1));
         lblTotal.setText("Total de libros: "+catalogo.size());
+        mostrarRanking();
         btnRegistrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -132,6 +136,29 @@ public class Ventana {
                 }
             }
         });
+        btnMeGusta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(codigoSeleccionado==-1){
+                    JOptionPane.showMessageDialog(null,"Seleccione un libro");
+                }else{
+                    try {
+                        catalogo.darMeGusta(codigoSeleccionado);
+                        Libro aux=catalogo.obtener().get(catalogo.buscarIndicePorCodigo(codigoSeleccionado));
+                        lblMeGusta.setText("Me gusta: "+aux.getMeGusta());
+                        lstResultados.repaint();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null,ex.getMessage());
+                    }
+                }
+            }
+        });
+        btnActualizar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarRanking();
+            }
+        });
         tabbedPane1.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -141,6 +168,7 @@ public class Ventana {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null,ex.getMessage());
                 }
+                mostrarRanking();
             }
         });
     }
@@ -186,6 +214,12 @@ public class Ventana {
         cboEditarGenero.setSelectedIndex(0);
         spiEditarAnio.setValue(Year.now().getValue());
         lblMeGusta.setText("Me gusta: ");
+    }
+
+    private void mostrarRanking(){
+        DefaultListModel dlm=new DefaultListModel();
+        dlm.addAll(catalogo.obtenerRanking());
+        lstRanking.setModel(dlm);
     }
 
     public static void main(String[] args) {
