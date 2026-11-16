@@ -65,6 +65,32 @@ public class CatalogoLibros {
         ordenarPorCodigoBurbuja();
     }
 
+    public ArrayList<Libro> buscarCoincidencias(String texto) throws Exception {
+        if(texto.trim().isEmpty())
+            throw new Exception("Ingrese un texto para buscar");
+        String t=texto.trim().toLowerCase();
+        ArrayList<Libro> resultado=new ArrayList<>();
+        for(Libro aux:libros){
+            if(aux.getTitulo().toLowerCase().contains(t)
+              ||aux.getAutor().toLowerCase().contains(t)){
+                resultado.add(aux);
+            }
+        }
+        return resultado;
+    }
+
+    public void editarLibro(int codigo,String titulo,String autor,String genero,int anio) throws Exception {
+        int indice=buscarIndicePorCodigo(codigo);
+        if(indice==-1)
+            throw new Exception("Libro no encontrado");
+        validar(titulo,autor,genero,anio);
+        Libro aux=libros.get(indice);
+        aux.setTitulo(titulo.trim());
+        aux.setAutor(autor.trim());
+        aux.setGenero(genero);
+        aux.setAnio(anio);
+    }
+
     public ArrayList<Libro> obtener(){
         return libros;
     }
