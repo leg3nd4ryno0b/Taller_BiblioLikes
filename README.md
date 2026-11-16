@@ -202,9 +202,9 @@ Los casos que indican «datos iniciales» deben ejecutarse en una sesión nueva 
 
 | Integrante | Usuario GitHub | Funcionalidad desarrollada | Enlace al commit |
 |---|---|---|---|
-| Por completar | Por completar | Por completar | Por completar |
-| Por completar | Por completar | Por completar | Por completar |
-| Por completar | Por completar | Por completar | Por completar |
+| Julian Jiménez | [leg3nd4ryno0b](https://github.com/leg3nd4ryno0b) | R1 carga de los 20 libros y ordenamiento burbuja por código, búsqueda binaria, R2 registro con validaciones y pestaña Registro | [d4184b5](https://github.com/leg3nd4ryno0b/Taller_BiblioLikes/commit/d4184b5dac95fb4c2d1ba2cc04a958d2ff52954d) |
+| Esteban Figueroa | [EstebanFigueroa2006](https://github.com/EstebanFigueroa2006) | R3 búsqueda lineal por título o autor, R4 búsqueda por código y edición sin cambios parciales, pestaña Búsquedas y edición | [7a024bd](https://github.com/leg3nd4ryno0b/Taller_BiblioLikes/commit/7a024bd1520cbfed453089c0055b6430238af3c9) |
+| Daniel Valarezo | [dxni999](https://github.com/dxni999) | R5 botón Me gusta, R6 ranking con burbuja estable por me gusta, pestaña Ranking | [f65ece7](https://github.com/leg3nd4ryno0b/Taller_BiblioLikes/commit/f65ece79bbdae43fd06d30ab1259104f575632bf) |
 
 Verificar que GitHub asocie los commits a sus cuentas; si utilizan Git local, el correo configurado debe estar asociado a la cuenta correspondiente. El número de commits no sustituye la explicación del aporte.
 
